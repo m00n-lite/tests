@@ -1,9 +1,12 @@
 <?
-	$_POST = json_decode(file_get_contents('php://input'), true);
+	// $_POST = json_decode(file_get_contents('php://input'), true);
+
+	$input = json_decode(file_get_contents('php://input'), true);
+
 	$fields = ['name','phone','email','message'];
 	$errors=[];
 	foreach ($fields as $key) {
-		if($_POST[$key]==''){
+		if($input[$key]==''){
 			$errors[$key]=$key. ' can not be null';
 		}
 	}
